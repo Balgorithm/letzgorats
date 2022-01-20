@@ -11,8 +11,8 @@ print(answer)
 
 '''풀이 방법 2'''
 import sys
-from collections import deque # 덱 방법 생각해봤는데 굳이 더하고 빼고 반복안해도 된다.
-# dq = deque(numbers[-2:]) # 최댓값과 그 다음으로 큰 값이 담긴 덱 dq가 생성된다.
+from collections import deque # 방법 생각해봤는데 굳이 더하고 빼고 반복안해도 된다.
+# dq = deque(numbers[-2:]) # 최댓갑과 그 다음으로 큰 값이 담긴 덱 dq가 생성된다.
 input = sys.stdin.readline
 
 n, m, k = map(int,input().split())
@@ -23,17 +23,21 @@ answer = 0
 
 num = biggest   # 맨 처음은 num을 biggest로 설정
 biggest_check = True # num이 현재 biggest인지 판별하는 변수 True
-
+go_to_answer = False # while문 탈출 조건식
 i = 0
 while i < m: # m번 반복
   if not biggest_check :
     answer += num #  여기서 num은 second
     num = biggest # 한번만 second를 더해주고 다시 num을 biggest로 갱신
     i += 1 # 1번 수행
-  if i+k > m :
+  for _ in range(k):
+    if i+1 > m:
+        break
+        go_to_answer = True
+    answer += num
+    i += 1
+  if go_to_answer :
       break
-  answer += (num*k) # 여기서 num은 biggest
-  i += k # k번 수행
   num = second # biggest를 k번 더했으면
   biggest_check = False
 print(answer)

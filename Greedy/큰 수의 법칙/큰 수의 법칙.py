@@ -11,8 +11,8 @@ print(answer)
 
 '''풀이 방법 2'''
 import sys
-from collections import deque # 방법 생각해봤는데 굳이 더하고 빼고 반복안해도 된다.
-# dq = deque(numbers[-2:]) # 최댓갑과 그 다음으로 큰 값이 담긴 덱 dq가 생성된다.
+from collections import deque # 덱 방법 생각해봤는데 굳이 더하고 빼고 반복안해도 된다.
+# dq = deque(numbers[-2:]) # 최댓값과 그 다음으로 큰 값이 담긴 덱 dq가 생성된다.
 input = sys.stdin.readline
 
 n, m, k = map(int,input().split())

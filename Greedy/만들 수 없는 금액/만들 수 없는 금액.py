@@ -19,3 +19,19 @@ for idx,answer in enumerate(all_case):  # all_case를 돌면서
     if idx + 1 != answer :  # idx+1 와 그 수가 다르면, 그 idx+1이 답이다.(그게 만들 수 없는 최솟값이니까)
         print(idx + 1)
         break
+
+
+## 다른 풀이( 정답 코드 - 효율적인 풀이 ) 
+import sys
+input = sys.stdin.readline
+
+n = int(input())
+coin_list = sorted(list(map(int,input().split())))
+target = 1
+# 1 1 3 3 9
+for x in coin_list:
+    if target < x : # target이 현재 가리키고 있는 x보다 작으면 그 target은 만들 수 없는 금액
+        break # 반복문 탈출
+    target += x # target에 x를 더해주면서 갱신
+
+print(target)
